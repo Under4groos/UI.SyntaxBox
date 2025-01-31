@@ -55,7 +55,7 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "6.0.x" # Укажите версию .NET, которую вы используете
+          dotnet-version: "8.0.x" # Укажите версию .NET, которую вы используете
 
       - name: Restore dependencies
         run: dotnet restore "UI.SyntaxBox/UI.SyntaxBox.csproj"
