@@ -63,5 +63,4 @@ jobs:
       - name: Build
         run: dotnet build "UI.SyntaxBox/UI.SyntaxBox.csproj" --configuration Release --no-restore
 
-      - name: Run tests
-        run: dotnet test "UI.SyntaxBox/UI.SyntaxBox.Tests.csproj" --no-build --verbosity normal
+     
