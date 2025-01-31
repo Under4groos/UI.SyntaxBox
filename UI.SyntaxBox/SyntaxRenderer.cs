@@ -76,6 +76,7 @@ namespace UI.SyntaxBox
             get => ((Brush)this.GetValue(LineNumbersForegroundProperty) ?? Brushes.Red);
             set => this.SetValue(LineNumbersForegroundProperty, value);
         }
+
         // ...................................................................
         #endregion
 
@@ -86,6 +87,7 @@ namespace UI.SyntaxBox
         /// directly to the drawing context.
         /// </summary>
         /// <param name="drawingContext">The drawing instructions for a specific element. This context is provided to the layout system.</param>
+        [Obsolete]
         protected override void OnRender(DrawingContext drawingContext)
         {
 
