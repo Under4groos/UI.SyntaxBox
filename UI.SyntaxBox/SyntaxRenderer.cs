@@ -43,7 +43,7 @@ namespace UI.SyntaxBox
             typeof(TextBox),
             typeof(SyntaxRenderer),
             new PropertyMetadata(null, new PropertyChangedCallback(OnTargetChanged))
-        );
+        ); 
         // ...................................................................
         public TextBox Target
         {
