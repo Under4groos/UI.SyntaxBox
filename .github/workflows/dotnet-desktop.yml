@@ -45,6 +45,7 @@ on:
     branches: ["master"]
 
 jobs:
+  
   build:
     runs-on: windows-latest # Используйте Windows для сборки .NET приложений
 
@@ -65,7 +66,7 @@ jobs:
         run: dotnet build "UI.SyntaxBox/UI.SyntaxBox.csproj" --configuration Release --no-restore
   release:
     name: Release pushed tag
-    runs-on: qq
+    runs-on: self-hosted
     steps:
       - name: Create release
         env:
