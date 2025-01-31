@@ -45,9 +45,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   build:
-     runs-on: windows-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         configuration: [Release]
@@ -60,14 +59,17 @@ jobs:
       # Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
     steps:
-     - name: Restore dependencies
-        run: dotnet restore "UI.SyntaxBox/UI.SyntaxBox.csproj"
+      - name: Restore dependencies
+      run: dotnet restore "UI.SyntaxBox/UI.SyntaxBox.csproj"
 
       - name: Build
         run: dotnet build "UI.SyntaxBox/UI.SyntaxBox.csproj" --configuration Release --no-restore
 
       - name: Run tests
         run: dotnet test "UI.SyntaxBox/UI.SyntaxBox.Tests.csproj" --no-build --verbosity normal
+    
+    
+    
     # - name: Checkout
     #   uses: actions/checkout@v4
     #   with:
