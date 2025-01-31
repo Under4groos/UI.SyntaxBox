@@ -22,8 +22,6 @@ namespace UI.SyntaxBox
         private Brush _defaultFg, _lineNumbersFg;
         private double _numWidth = 0d;
         private int _numDigits = 0;
-
-        private long count = 0;
         private static MethodInfo _getLineHeight;
         private LineBuffer _lineBuffer = new LineBuffer();
         private ReadOnlyCollection<FormatInstruction> _noBlockInstr = new List<FormatInstruction>(0).AsReadOnly();
