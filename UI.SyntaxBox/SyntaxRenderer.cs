@@ -76,7 +76,6 @@ namespace UI.SyntaxBox
             get => ((Brush)this.GetValue(LineNumbersForegroundProperty) ?? Brushes.Red);
             set => this.SetValue(LineNumbersForegroundProperty, value);
         }
-
         // ...................................................................
         #endregion
 
@@ -87,7 +86,6 @@ namespace UI.SyntaxBox
         /// directly to the drawing context.
         /// </summary>
         /// <param name="drawingContext">The drawing instructions for a specific element. This context is provided to the layout system.</param>
-        [Obsolete]
         protected override void OnRender(DrawingContext drawingContext)
         {
 
@@ -170,6 +168,7 @@ namespace UI.SyntaxBox
                 // Create the line numbers text
                 string numbers = String.Join(Environment.NewLine,
                     visibleLines.Select((l) => (l.LineNumber + 1).ToString()).ToArray());
+#pragma warning disable CS0618 // Тип или член устарел
                 FormattedText numbersText = new FormattedText(numbers,
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
@@ -180,6 +179,7 @@ namespace UI.SyntaxBox
                     LineHeight = lineHeight,
                     TextAlignment = TextAlignment.Right
                 };
+#pragma warning restore CS0618 // Тип или член устарел
 
                 // Draw the line numbers. Since the text is right-aligned,
                 // the origin point is top-right rather than top-right.
@@ -203,6 +203,7 @@ namespace UI.SyntaxBox
 
             // Join the visible lines into a single text.
             string visibleText = String.Join("", visibleLines.Select((l) => l.Text).ToArray());
+#pragma warning disable CS0618 // Тип или член устарел
             FormattedText syntaxText = new FormattedText(visibleText,
                 System.Globalization.CultureInfo.CurrentCulture,
                 FlowDirection.LeftToRight,
@@ -212,6 +213,7 @@ namespace UI.SyntaxBox
             {
                 LineHeight = lineHeight
             };
+#pragma warning restore CS0618 // Тип или член устарел
 
             ISyntaxDriver syntaxDriver = this.GetSyntaxDriver();
             if (syntaxDriver != null)
@@ -369,6 +371,7 @@ namespace UI.SyntaxBox
             double left = 0d, width = 0d;
             if (From > 0)
             {
+#pragma warning disable CS0618 // Тип или член устарел
                 FormattedText prefix = new FormattedText(
                     Line.Substring(0, From),
                     System.Globalization.CultureInfo.CurrentCulture,
@@ -376,6 +379,7 @@ namespace UI.SyntaxBox
                     Typeface,
                     FontSize,
                     Brushes.Black);
+
                 left = prefix.WidthIncludingTrailingWhitespace;
             }
             FormattedText highlight = new FormattedText(
@@ -385,6 +389,8 @@ namespace UI.SyntaxBox
                     Typeface,
                     FontSize,
                     Brushes.Black);
+
+#pragma warning restore CS0618 // Тип или член устарел
             width = highlight.Width;
             return (new Rect(
                 new Point(left - 1, 0d),
@@ -410,12 +416,14 @@ namespace UI.SyntaxBox
             {
                 this._numDigits = digits;
                 string requiredChars = String.Empty.PadLeft(digits, '0');
+#pragma warning disable CS0618 // Тип или член устарел
                 FormattedText requiredText = new FormattedText(requiredChars,
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     Typeface,
                     this.Target.FontSize,
                     Brushes.Black);
+#pragma warning restore CS0618 // Тип или член устарел
                 this._numWidth = requiredText.Width + LN_MARGIN * 2;
             }
 
